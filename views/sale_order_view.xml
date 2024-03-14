@@ -1,0 +1,33 @@
+<odoo>
+    <record id="view_sale_order_form_inherit2" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit2</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Oportunidad CRM" name="opportunity_tab">
+                    <group string="Detalles de la Oportunidad" create="false">
+                        <!-- Define tus columnas para la vista tree aquí -->
+                        <field name="opportunity_id"/>
+                        <field name="opportunity_stage_id"/>
+                        <field name="opportunity_closed_status"/>
+                        <!-- Agrega más campos si es necesario -->
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+     <record id="view_order_tree_inherit2" model="ir.ui.view">
+        <field name="name">sale.order.tree.inherit2</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <field name="opportunity_closed_status" decoration-success="opportunity_closed_status == 'closed_won'" decoration-warning="opportunity_closed_status == 'pending_closure'" decoration-danger="opportunity_closed_status == 'closed_lost'"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
